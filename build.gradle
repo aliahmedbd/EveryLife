@@ -10,8 +10,9 @@ buildscript {
         okhttpLoggingVersion = '4.7.2'
         navigationVersion = '2.4.2'
         truthVersion = '0.42'
-        coroutinesVersion = "1.4.2"
-        room_version = '2.4.1'
+        coroutinesVersion = "1.6.4"
+        lifecycle_version = "2.4.0"
+        room_version = '2.4.3'
     }
 }
 

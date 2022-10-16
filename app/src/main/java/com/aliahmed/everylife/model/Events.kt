@@ -11,7 +11,7 @@ data class Events(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id")
     @SerializedName("id")
-    val id: Int? = null,
+    val id: Int,
 
     @ColumnInfo(name = "name")
     @SerializedName("name")

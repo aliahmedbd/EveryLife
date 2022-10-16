@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">EveryLife</string>
+    <string name="medication">medication</string>
+    <string name="hydration">Hydration</string>
+    <string name="nutrition">Nutrition</string>
+    <string name="general">General</string>
 </resources>
