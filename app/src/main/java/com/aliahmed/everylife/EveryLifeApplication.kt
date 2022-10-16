@@ -2,6 +2,7 @@ package com.aliahmed.everylife
 
 import android.app.Application
 import com.aliahmed.everylife.di.appModule
+import com.aliahmed.everylife.di.databaseModule
 import com.aliahmed.everylife.di.networkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -19,7 +20,7 @@ class EveryLifeApplication : Application() {
         startKoin {
             androidContext(this@EveryLifeApplication)
             androidLogger(Level.INFO)
-            modules(listOf(networkModule, appModule))
+            modules(listOf(networkModule, databaseModule, appModule))
         }
     }
 
