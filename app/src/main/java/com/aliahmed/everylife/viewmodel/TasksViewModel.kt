@@ -3,6 +3,7 @@ package com.aliahmed.everylife.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aliahmed.everylife.model.BaseResponse
+import com.aliahmed.everylife.model.Events
 import com.aliahmed.everylife.network.ResponseModel
 import com.aliahmed.everylife.repository.TasksRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,5 +27,9 @@ class TasksViewModel(private val repository: TasksRepository) : ViewModel() {
                 }
             }
         }
+    }
+
+    fun filterData(tasks : List<Events>, filteredTask : List<String>) : List<Events>{
+        return tasks.filter { it.type in filteredTask }
     }
 }
