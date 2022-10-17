@@ -1,11 +1,10 @@
 package com.aliahmed.everylife.utils
 
 import com.aliahmed.everylife.R
-import com.aliahmed.everylife.network.ResponseModel
-import java.lang.reflect.Type
+import java.util.*
 
 fun String.getIcon(): Int {
-    when (this) {
+    when (this.uppercase(Locale.getDefault())) {
         Types.GENERAL.name -> {
             return R.mipmap.general
         }
