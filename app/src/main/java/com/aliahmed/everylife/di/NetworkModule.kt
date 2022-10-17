@@ -2,6 +2,7 @@ package com.aliahmed.everylife.di
 
 import com.aliahmed.everylife.BuildConfig
 import com.google.gson.GsonBuilder
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -31,6 +32,11 @@ val networkModule = module {
             .baseUrl(server)
             .client(okHttpClientBuilder.build())
             .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    factory {
+        CertificatePinner.Builder()
             .build()
     }
 }

@@ -8,7 +8,7 @@
     android:paddingBottom="8sp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgType"
         android:layout_width="30sp"
         android:layout_height="30sp"
         android:layout_marginTop="8sp"
@@ -27,17 +27,18 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgType"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/txtDescription"
         android:layout_width="0sp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16sp"
         android:text="test text\nfdgsgdfg\bsdfgsdfg"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgType"
         app:layout_constraintTop_toBottomOf="@+id/txtHeading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

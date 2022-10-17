@@ -12,8 +12,6 @@ import retrofit2.Retrofit
 
 val appModule = module {
 
-    factory { androidContext() }
-
     factory {
         val retrofit: Retrofit = get()
         retrofit.create(TasksApi::class.java)
@@ -23,7 +21,7 @@ val appModule = module {
 
     factory { TasksLocalDataSource(tasksDao = get()) }
 
-    factory { TasksRepository(context = get(), tasksRemoteDataSource = get(), localDataSource = get()) }
+    factory { TasksRepository(context = androidContext(), tasksRemoteDataSource = get(), localDataSource = get()) }
 
     viewModel { TasksViewModel(repository = get()) }
 

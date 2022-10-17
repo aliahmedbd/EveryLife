@@ -1,4 +1,4 @@
-package com.aliahmed.utils
+package com.aliahmed.everylife.utils
 
 import android.content.Context
 import android.net.ConnectivityManager

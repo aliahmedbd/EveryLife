@@ -1,13 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        koin_version = "3.1.5"
+        koin_version = "3.2.1"
         glideVersion = '4.10.0'
-        gsonVersion = '2.8.2'
+        gsonVersion = '2.9.0'
         lifecycleVersion = '2.2.0'
         materialVersion = '1.2.0'
         retrofitVersion = '2.9.0'
-        okhttpLoggingVersion = '4.7.2'
+        okhttpLoggingVersion = '4.10.0'
         navigationVersion = '2.4.2'
         truthVersion = '0.42'
         coroutinesVersion = "1.6.4"

@@ -1,4 +1,4 @@
-package com.aliahmed.utils
+package com.aliahmed.everylife.utils
 
 enum class Types(name : String) {
     GENERAL("General"),
