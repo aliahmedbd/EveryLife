@@ -5,11 +5,14 @@ import com.aliahmed.everylife.datasource.TasksRemoteDataSource
 import com.aliahmed.everylife.network.TasksApi
 import com.aliahmed.everylife.repository.TasksRepository
 import com.aliahmed.everylife.viewmodel.TasksViewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
 val appModule = module {
+
+    factory { androidContext() }
 
     factory {
         val retrofit: Retrofit = get()
@@ -20,7 +23,7 @@ val appModule = module {
 
     factory { TasksLocalDataSource(tasksDao = get()) }
 
-    factory { TasksRepository(tasksRemoteDataSource = get(), localDataSource = get()) }
+    factory { TasksRepository(context = get(), tasksRemoteDataSource = get(), localDataSource = get()) }
 
     viewModel { TasksViewModel(repository = get()) }
 
