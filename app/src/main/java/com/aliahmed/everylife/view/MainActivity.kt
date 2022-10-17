@@ -1,5 +1,10 @@
 package com.aliahmed.everylife.view
 
+import android.app.Activity
+import android.content.Context
+import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.Network
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -14,7 +19,9 @@ import com.aliahmed.everylife.databinding.ActivityMainBinding
 import com.aliahmed.everylife.model.Events
 import com.aliahmed.everylife.network.ResponseModel
 import com.aliahmed.everylife.utils.Types
+import com.aliahmed.everylife.utils.showSnackBar
 import com.aliahmed.everylife.viewmodel.TasksViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         clickListeners()
         getTasks()
         listenData()
+        checkInternet()
     }
 
     private fun getTasks() {
@@ -122,5 +130,30 @@ class MainActivity : AppCompatActivity() {
             view.setBackgroundColor(getColor(R.color.background_color))
         }
         listenData()
+    }
+
+    private fun checkInternet() {
+        val connectivityManager =
+            getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        connectivityManager.registerDefaultNetworkCallback(object :
+            ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                showSnackBar(
+                    this@MainActivity,
+                    getString(R.string.back_to_online),
+                    duration = Snackbar.LENGTH_SHORT,
+                    color = Color.parseColor("#CC000000")
+                )
+            }
+
+            override fun onLost(network: Network) {
+                showSnackBar(
+                    this@MainActivity,
+                    getString(R.string.offline),
+                    duration = Snackbar.LENGTH_INDEFINITE,
+                    color = Color.parseColor("#FF0000")
+                )
+            }
+        })
     }
 }
