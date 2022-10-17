@@ -11,14 +11,14 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class TasksViewModel(private val repository: TasksRepository) : ViewModel() {
+class TasksViewModel(private val repository: TasksRepository?) : ViewModel() {
 
     val uiUpdates =
         MutableStateFlow<ResponseModel<BaseResponse>>(ResponseModel.Idle("Idle State"))
 
     suspend fun getTasks() {
         uiUpdates.emit(ResponseModel.Loading())
-        repository.getTasks().collect {
+        repository?.getTasks()?.collect {
             viewModelScope.launch {
                 if (it.success == true) {
                     uiUpdates.emit(ResponseModel.Success(it))
