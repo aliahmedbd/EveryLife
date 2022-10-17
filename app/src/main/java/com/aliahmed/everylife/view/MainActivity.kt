@@ -1,11 +1,12 @@
 package com.aliahmed.everylife.view
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aliahmed.everylife.R
 import com.aliahmed.everylife.adapter.TaskListAdapter
@@ -17,7 +18,6 @@ import com.aliahmed.everylife.viewmodel.TasksViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.lang.reflect.Type
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         clickListeners()
         getTasks()
-        getData()
+        listenData()
     }
 
     private fun getTasks() {
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getData() {
+    private fun listenData() {
         lifecycleScope.launch {
             viewModel.uiUpdates.collectLatest {
                 when (it) {
@@ -57,7 +57,11 @@ class MainActivity : AppCompatActivity() {
                             .show()
                     }
                     is ResponseModel.Success -> {
-                        Toast.makeText(this@MainActivity, "Data fetched successfully", Toast.LENGTH_SHORT)
+                        Toast.makeText(
+                            this@MainActivity,
+                            "Data fetched successfully",
+                            Toast.LENGTH_SHORT
+                        )
                             .show()
                         if (it.data?.events.isNullOrEmpty()) {
                             Toast.makeText(
@@ -81,51 +85,42 @@ class MainActivity : AppCompatActivity() {
         adapter = TaskListAdapter(filteredTasks)
         binding.rvTasks.adapter = adapter
 
+        if (filteredTasks.isEmpty()) {
+            binding.rvTasks.visibility = View.INVISIBLE
+            binding.txtEmptyView.visibility = View.VISIBLE
+        } else {
+            binding.rvTasks.visibility = View.VISIBLE
+            binding.txtEmptyView.visibility = View.INVISIBLE
+        }
+
     }
 
     private fun clickListeners() {
         binding.imgGeneral.setOnClickListener {
-            if (filterList.contains("general")) {
-                filterList.remove("general")
-                binding.imgGeneral.setBackgroundColor(getColor(R.color.white))
-            } else {
-                filterList.add("general")
-                binding.imgGeneral.setBackgroundColor(getColor(R.color.background_color))
-            }
-            getData()
+            filterType(Types.GENERAL.name.lowercase(), binding.imgGeneral)
         }
 
         binding.imgHydration.setOnClickListener {
-            if (filterList.contains("hydration")) {
-                filterList.remove("hydration")
-                binding.imgHydration.setBackgroundColor(getColor(R.color.white))
-            } else {
-                filterList.add("hydration")
-                binding.imgHydration.setBackgroundColor(getColor(R.color.background_color))
-            }
-            getData()
+            filterType(Types.HYDRATION.name.lowercase(), binding.imgHydration)
         }
 
         binding.imgMedication.setOnClickListener {
-            if (filterList.contains("medication")) {
-                filterList.remove("medication")
-                binding.imgMedication.setBackgroundColor(getColor(R.color.white))
-            } else {
-                filterList.add("medication")
-                binding.imgMedication.setBackgroundColor(getColor(R.color.background_color))
-            }
-            getData()
+            filterType(Types.MEDICATION.name.lowercase(), binding.imgMedication)
         }
 
         binding.imgNutrition.setOnClickListener {
-            if (filterList.contains("nutrition")) {
-                filterList.remove("nutrition")
-                binding.imgNutrition.setBackgroundColor(getColor(R.color.white))
-            } else {
-                filterList.add("nutrition")
-                binding.imgNutrition.setBackgroundColor(getColor(R.color.background_color))
-            }
-            getData()
+            filterType(Types.NUTRITION.name.lowercase(), binding.imgNutrition)
         }
+    }
+
+    private fun filterType(type: String, view: ImageView) {
+        if (filterList.contains(type)) {
+            filterList.remove(type)
+            view.setBackgroundColor(getColor(R.color.white))
+        } else {
+            filterList.add(type)
+            view.setBackgroundColor(getColor(R.color.background_color))
+        }
+        listenData()
     }
 }

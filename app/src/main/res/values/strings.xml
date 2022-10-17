@@ -4,4 +4,5 @@
     <string name="hydration">Hydration</string>
     <string name="nutrition">Nutrition</string>
     <string name="general">General</string>
+    <string name="no_data_available_or_no_filter_applied">No data available or no filter applied.</string>
 </resources>
