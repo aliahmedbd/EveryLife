@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="16sp"
         android:layout_marginTop="16sp"
+        android:background="@color/white"
         tools:context=".view.MainActivity">
 
         <TextView
