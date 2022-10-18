@@ -1,6 +1,6 @@
 # EveryLife
  
-This is a technical task from EveryLife Technology. I have names this app is "EveryLife" and this is a Kotlin first project and I have followed the advanced Android development using MVVM design pattern, Dependancy injection (Koin), Kotlin Coroutine, Kotlin Flows etc.
+This is a technical task from EveryLife Technology. I have names this app is "EveryLife" and this is a Kotlin first project and I have followed the advanced Android development using MVVM design pattern, Dependancy injection (Koin), Kotlin Coroutine, Kotlin Flows, ROOM etc.
 
 ## App Details
 
