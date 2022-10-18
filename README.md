@@ -13,8 +13,6 @@ Here is the recorded screen for the entire app journey:
 2. App can fetch data if no active internet connectivity
 3. Using bottom menu user can filter the tasks list
 
-APK Link: 
-
 The tools I have used to gain the MVVM architecture pattern:
 
 - MVVM :  MVVM architecure is followed for the code boilerplate. Where View, ViewModel, Repisitory are clearly used for maintailed the SOLID principle. (https://www.geeksforgeeks.org/mvvm-model-view-viewmodel-architecture-pattern-in-android/)
@@ -26,6 +24,13 @@ The tools I have used to gain the MVVM architecture pattern:
 - ROOM : Room database used for offline data management.
 - BuildTypes: Build types used for defines the different build types like Development, Release and Stages
 - Data Binding: ViewBinding used for the view initialization
+
+### Unit test
+
+For unit test I used Junit, Mockito and Espresso, where I tried two ways Unit test. For recycler view items I used instrumented test cases and for viewmodel test I use normal Junit test cases.
+
+![Screenshot 2022-10-18 at 11 32 33](https://user-images.githubusercontent.com/11981999/196406960-1827421d-2658-4a8a-8ce4-73cfa922786e.png)
+
 
 #### API Specification
 
