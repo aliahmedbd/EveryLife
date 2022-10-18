@@ -13,6 +13,8 @@ Here is the recorded screen for the entire app journey:
 2. App can fetch data if no active internet connectivity
 3. Using bottom menu user can filter the tasks list
 
+### Android Technologies
+
 The tools I have used to gain the MVVM architecture pattern:
 
 - MVVM :  MVVM architecure is followed for the code boilerplate. Where View, ViewModel, Repisitory are clearly used for maintailed the SOLID principle. (https://www.geeksforgeeks.org/mvvm-model-view-viewmodel-architecture-pattern-in-android/)
