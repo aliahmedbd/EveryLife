@@ -1,18 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16sp"
+        android:layout_marginTop="16sp"
+        tools:context=".view.MainActivity">
+
+        <TextView
+            android:id="@+id/txtEmptyView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:text="@string/no_data_available_or_no_filter_applied"
+            app:layout_constraintBottom_toBottomOf="@+id/rvTasks"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTasks"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/imgGeneral"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_tasks" />
+
+
+        <ImageView
+            android:id="@+id/imgGeneral"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/background_color"
+            android:padding="5sp"
+            android:src="@mipmap/general"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgMedication"
+            android:contentDescription="@string/general" />
+
+        <ImageView
+            android:id="@+id/imgMedication"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/background_color"
+            android:padding="5sp"
+            android:src="@mipmap/medication"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgHydration"
+            android:contentDescription="@string/medication" />
+
+        <ImageView
+            android:id="@+id/imgHydration"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/background_color"
+            android:padding="5sp"
+            android:src="@mipmap/hydration"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            android:contentDescription="@string/hydration" />
+
+
+        <ImageView
+            android:id="@+id/imgNutrition"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/background_color"
+            android:padding="5sp"
+            android:src="@mipmap/nutrition"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgHydration"
+            android:contentDescription="@string/nutrition" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
